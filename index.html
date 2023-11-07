@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drug Dispenser Vending Machine</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<style>
+		body {
+			background-color: #f2f2f2;
+		}
+		.container {
+			margin-top: 50px;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px #888888;
+			background-color:#9ed1d1;
+		}
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.row {
+			margin-bottom: 20px;
+		}
+		.col-md-4 {
+			text-align: center;
+		}
+		.btn {
+			width: 100%;
+			margin-top: 10px;
+		}
+		.alert {
+			margin-top: 20px;
+			display: none;
+		}
+		#p1{
+			height: 200px;
+		}
+		#p2{
+            width: 200px;
+			height: 200px;
+			margin: 20px;
+		}
+		#p3{
+			width: 250px;
+			height: 250px;
+			margin: 20px;
+		}
+		#p4{
+			width: 250px;
+			height: 250px;
+			margin: 20px;
+		}
+		#p5{
+			width: 250px;
+			height: 250px;
+			margin: 20px;
+		}
+		#p6,#p8{
+			width: 250px;
+			height: 250px;
+			margin: 20px;
+		}
+		#btn1{
+			width: 45%;
+		}
+		#btn2{
+			width: 45%;
+		}
+		#btn3{
+			width: 45%;
+		}
+		#btn4{
+			width: 45%;
+		}
+		#btn5{
+			width: 45%;
+		}
+		#btn6,#btn7,#btn8{
+			width:45%;
+		}
+        
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+		<h1> User Interface of  Drug Dispenser </h1>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Select Drug</h3>
+				<select id="drug-name" class="form-control" >
+					<option value="0"  >Select Drug</option>
+					<option value="drug1" >Paracetamol</option>
+					<option value="drug2" >Antibiotic</option>
+					<option value="drug3" >Cofsils</option>
+					<option value="drug4" >Saridon</option>
+					<option value="drug5" >Gelesil</option>
+					<option value="drug6" >Dolo650</option>
+					<option value="drug7" >Asprin Tablet</option>
+					<option value="drug8" >Antihistamine</option>
+
+				</select>
+			</div>
+			<div class="col-md-4">
+				<h3>Select Quantity</h3>
+				<input type="number" id="drug-quantity" class="form-control" placeholder="Enter Quantity">
+				<button type="button" class="btn btn-primary" id="drug-quantity" onclick="insertCoins() ">Select Quantity</button>
+			</div>
+
+			<div class="col-md-4">
+				<h3>Total Price</h3>
+				<input type="text" id="total-price" name="totalPrice" placeholder="Total Price Of  Drugs" readonly>
+			</div>
+			<div class="col-md-4">
+				<h3>Insert Rupees</h3>
+				<input type="number" id="coins" class="form-control" placeholder="Enter Coins">
+				<button type="button" class="btn btn-primary" onclick="insertCoins()">Insert Rupees</button>
+			</div>
+			<div class="col-md-4">
+				<h3>Get Drug</h3>
+				<button type="button" class="btn btn-success" onclick="getDrug()" >Get Drug</button>
+			</div>  
+		</div>
+
+		<div class="alert alert-success" id="success" role="alert">
+			Drug Dispensed Successfully!
+		</div>
+		<div class="alert alert-danger" id="error" role="alert">
+			Please Insert Sufficient Rupees and Select a Drug!
+		</div>
+<!---->
+		<button type="button"
+		class="btn btn-primary"
+		data-toggle="modal"
+		data-target="#exampleModal" id="btn1">
+	Paracetamol - 10 Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+	 id="exampleModal"
+	 tabindex="-1"
+	 role="dialog"
+	 aria-labelledby="exampleModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<!-- Add image inside the body of modal -->
+			<div class="modal-body">
+				<img id="image"
+					 src=
+"./images/paracetamol.jpeg"
+					 alt="Click on button" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button"
+						class="btn btn-secondary"
+						data-dismiss="modal">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!---->
+
+<button type="button"
+class="btn btn-primary"
+data-toggle="modal"
+data-target="#exampleModal1" id="btn2">
+Antiseptic -  15Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+id="exampleModal1"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+		<!-- Add image inside the body of modal -->
+		<div class="modal-body">
+			<img id="image"
+				src="./images/azital-500.jpg"
+				alt="Click on button">
+		</div>
+			<div class="modal-footer">
+				<button type="button"
+						class="btn btn-secondary"
+						data-dismiss="modal">
+					Close
+				</button>
+			</div>
+</div>
+</div>
+</div>
+
+
+<button type="button"
+class="btn btn-primary"
+data-toggle="modal"
+data-target="#exampleModal2" id="btn3">
+Cofsils  - 20Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+id="exampleModal2"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+
+	<!-- Add image inside the body of modal -->
+	<div class="modal-body">
+		<img id="image"
+			 src=
+"./images/cofsils.jpeg"
+			 alt="Click on button" />
+	</div>
+
+	<div class="modal-footer">
+		<button type="button"
+				class="btn btn-secondary"
+				data-dismiss="modal">
+			Close
+		</button>
+	</div>
+</div>
+</div>
+</div>
+
+<button type="button"
+class="btn btn-primary"
+data-toggle="modal"
+data-target="#exampleModal3" id="btn4">
+ saridon  - 25Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+id="exampleModal3"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+
+	<!-- Add image inside the body of modal -->
+	<div class="modal-body">
+		<img id="image"
+			 src=
+"./images/saridon1.jpg"
+			 alt="Click on button" />
+	</div>
+
+	<div class="modal-footer">
+		<button type="button"
+				class="btn btn-secondary"
+				data-dismiss="modal">
+			Close
+		</button>
+	</div>
+</div>
+</div>
+</div>
+
+
+<button type="button"
+class="btn btn-primary"
+data-toggle="modal"
+data-target="#exampleModal4" id="btn5">
+Gelesil   15Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+id="exampleModal4"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+
+	<!-- Add image inside the body of modal -->
+	<div class="modal-body">
+		<img id="image"
+			 src=
+"./images/gelesil.jpg"
+			 alt="Click on button" />
+	</div>
+
+	<div class="modal-footer">
+		<button type="button"
+				class="btn btn-secondary"
+				data-dismiss="modal">
+			Close
+		</button>
+	</div>
+</div>
+</div>
+</div>
+
+
+<button type="button"
+class="btn btn-primary"
+data-toggle="modal"
+data-target="#exampleModal5" id="btn6">
+Dolo 650  - 20Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+id="exampleModal5"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+
+	<!-- Add image inside the body of modal -->
+	<div class="modal-body">
+		<img id="image"
+			 src=
+"./images/dolo650.jpg"
+			 alt="Click on button" />
+	</div>
+
+	<div class="modal-footer">
+		<button type="button"
+				class="btn btn-secondary"
+				data-dismiss="modal">
+			Close
+		</button>
+	</div>
+</div>
+</div>
+</div>
+
+
+
+
+<button type="button"
+		class="btn btn-primary"
+		data-toggle="modal"
+		data-target="#exampleModal7" id="btn7">
+	Asprin tablet - 50Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+	 id="exampleModal7"
+	 tabindex="-1"
+	 role="dialog"
+	 aria-labelledby="exampleModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<!-- Add image inside the body of modal -->
+			<div class="modal-body">
+				<img id="image"
+					 src=
+"./images/Asprin.jpeg"
+					 alt="Click on button" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button"
+						class="btn btn-secondary"
+						data-dismiss="modal">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<button type="button"
+		class="btn btn-primary"
+		data-toggle="modal"
+		data-target="#exampleModal8" id="btn8">
+	Antihistamine   - 25Rs
+</button>
+<!-- Modal -->
+<div class="modal fade"
+	 id="exampleModal8"
+	 tabindex="-1"
+	 role="dialog"
+	 aria-labelledby="exampleModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<!-- Add image inside the body of modal -->
+			<div class="modal-body">
+				<img id="image"
+					 src=
+"./images/anthihistamine.jpg"
+					 alt="Click on button" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button"
+						class="btn btn-secondary"
+						data-dismiss="modal">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+</form>
+</div>
+
+
+
+
+
+
+	<div class="container">
+		 <div class="img">
+					<h1>ABOUT THE DRUGS </h1>		
+			 <a href="https://www.drugs.com/paracetamol.html" target="_blank"><img src="./images/paracetamol.jpeg" alt="" id="p1"></a>
+			<a href="https://www.medicalnewstoday.com/articles/antiseptic" target="_blank"><img src="./images/Antiseptic Tablet.jpeg" alt="" width="400px" height="400px" id="p2"></a>
+			<a href="https://www.medicalnewstoday.com/articles/antiseptic" target="_blank"><img src="./images/cofsils.jpeg" alt="" id="p3"></a>
+			<a href="https://www.apollopharmacy.in/otc/saridon-50mg-tablet-10-s" target="_blank"><img src="./images/Saridon.webp" alt="" id="p4"></a>
+              <a href="http://gelusil.com/about-gelusil" target="_blank"><img src="./images/gelesil.jpg" alt=""  id="p5"></a>
+			  <a href="https://pharmeasy.in/online-medicine-order/dolo-650mg-strip-of-15-tablets-44140" target="_blank"><img src="./images/dolo650.jpg" alt="" id="p6"></a>
+			  <a href="https://www.webmd.com/drugs/2/drug-1082-3/aspirin-oral/aspirin-oral/details"><img src="./images/Asprin.jpeg" alt=""></a>
+			  <a href=""><img src="./images/anthihistamine.jpg" id="p8" alt=""></a>
+		 </div>
+		
+			
+	</div>
+	<script>
+               $(document).ready(function() {
+				$('#drug-quantity').on('input', function() {
+					var drugName = $('#drug-name').val();
+					var quantity = $('#drug-quantity').val();
+					var price;
+  
+						switch(drugName) {
+						case 'drug1':
+							price = 10;
+							break;
+						case 'drug2':
+							price = 15;
+							break;
+						case 'drug3':
+							price = 20;
+							break;
+							case 'drug4':
+							price = 25;
+							break;
+							case 'drug5':
+							price = 15;
+							break;
+							case 'drug6':
+							price = 20;
+							break;
+							case 'drug7':
+							price = 50;
+							break;
+							case 'drug8':
+							price = 25;
+							break;
+						default:
+							price = 0;
+						}
+				
+						var totalAmount = price * quantity;
+						$('#total-price').val(totalAmount);
+					});
+					});
+
+
+		var coins = 0;
+		var drug = 0;
+		
+		function insertCoins() {
+			coins = parseInt(document.getElementById("coins").value);
+		}
+		function getDrug() {
+			drug = parseInt(document.getElementById("drug-name").value);
+			if (coins >=10 && drug != 0 ) {
+				document.getElementById("success").style.display = "block";
+				document.getElementById("error").style.display = "none";
+				
+				document.getElementById("coins").value = coins;
+			} else {
+				document.getElementById("error").style.display = "block";
+				document.getElementById("success").style.display = "none";
+			}
+		}
+	
+  </script>
+
+
+</body>
+</html>
+

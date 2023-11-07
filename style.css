@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.vending-machine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.item img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.display {
+    text-align: center;
+    margin: 20px;
+}
+
+.coin {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.refund {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    margin: 20px;
+}
